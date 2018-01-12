@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+    <item android:title="Youtube">
+
+        <menu>
+            <item
+                android:id="@+id/nav_playlists"
+                android:icon="@drawable/ic_playlist_play_black_24dp"
+                android:title="My playlists"/>
+            <item
+                android:icon="@drawable/ic_history_black_24dp"
+                android:title="History"/>
+            <item
+                android:icon="@drawable/ic_search_black_24dp"
+                android:title="Search"/>
+            <item
+                android:icon="@drawable/ic_watch_later_black_24dp"
+                android:title="Watch later"/>
+            <item
+                android:icon="@drawable/ic_star_black_24dp"
+                android:title="Liked videos"/>
+            <item
+                android:icon="@drawable/ic_file_download_black_24dp"
+                android:title="Downloaded videos"/>
+        </menu>
+    </item>
+    <item android:title="Other">
+        <menu>
+            <!--here we're gonna choose from phone or url-->
+            <item
+                android:icon="@drawable/ic_audiotrack_black_24dp"
+                android:title="Convert to audio"/>
+            <item
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Settings"/>
+        </menu>
+    </item>
+</menu>

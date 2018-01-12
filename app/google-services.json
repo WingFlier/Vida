@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "170038027500",
+    "project_id": "vida-e8110"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170038027500:android:a70e2927f2e0bfde",
+        "android_client_info": {
+          "package_name": "wingfly.com.VideoAudioConverter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170038027500-keo60icbfbrqud0hdu4m8h6vno54k7b8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wingfly.com.VideoAudioConverter",
+            "certificate_hash": "adb6c89f3e9b59b11cde12b70a35842b0def8407"
+          }
+        },
+        {
+          "client_id": "170038027500-v6vam8prb47vovjplbbb8k550hjulqko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH6qzHcp9vh48XqmcXtVqnqqtHq_ROOQc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
