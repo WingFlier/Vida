@@ -17,6 +17,7 @@ import java.util.List;
 
 import wingfly.com.VideoAudioConverter.MainActivity;
 import wingfly.com.VideoAudioConverter.YoutubeStuff;
+import wingfly.com.VideoAudioConverter.fragments.ListFragment;
 
 /**
  * An asynchronous task that handles the YouTube Data API call.
@@ -126,6 +127,7 @@ public class MakeRequestTask extends AsyncTask<YoutubeStuff, Void, List<String>>
             output.add(0, "Data retrieved using the YouTube Data API:");
             Log.d(TAG, TextUtils.join("\n", output));
         }
+        ListFragment.getData(output);
     }
 
     @Override

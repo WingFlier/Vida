@@ -10,22 +10,28 @@
     tools:showIn="@layout/app_bar_main">
 
     <ImageView
-        android:visibility="gone"
-        android:clickable="true"
         android:id="@+id/refreshBtn"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_above="@+id/noInternetTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="23dp"
+        android:clickable="true"
+        android:focusable="true"
         android:src="@drawable/ic_refresh_black_24dp"
-        android:focusable="true"/>
+        android:visibility="gone"/>
+
     <TextView
+        android:id="@+id/noInternetTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="No Internet Connection"
-        android:visibility="gone"
-        android:id="@+id/noInternetTextView"/>
+        android:visibility="gone"/>
+
+    <FrameLayout
+        android:id="@+id/fragment_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

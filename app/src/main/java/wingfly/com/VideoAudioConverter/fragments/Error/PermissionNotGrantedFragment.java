@@ -1,4 +1,4 @@
-package wingfly.com.VideoAudioConverter.fragments;
+package wingfly.com.VideoAudioConverter.fragments.Error;
 
 
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import wingfly.com.VideoAudioConverter.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NoConnectionFragment#newInstance} factory method to
+ * Use the {@link PermissionNotGrantedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NoConnectionFragment extends Fragment
+public class PermissionNotGrantedFragment extends Fragment
 {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class NoConnectionFragment extends Fragment
     private String mParam2;
 
 
-    public NoConnectionFragment()
+    public PermissionNotGrantedFragment()
     {
         // Required empty public constructor
     }
@@ -37,12 +37,12 @@ public class NoConnectionFragment extends Fragment
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NoConnectionFragment.
+     * @return A new instance of fragment PermissionNotGrantedFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NoConnectionFragment newInstance(String param1, String param2)
+    public static PermissionNotGrantedFragment newInstance(String param1, String param2)
     {
-        NoConnectionFragment fragment = new NoConnectionFragment();
+        PermissionNotGrantedFragment fragment = new PermissionNotGrantedFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,7 +66,7 @@ public class NoConnectionFragment extends Fragment
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_no_connection, container, false);
+        return inflater.inflate(R.layout.fragment_permission_not_granted, container, false);
     }
 
 }

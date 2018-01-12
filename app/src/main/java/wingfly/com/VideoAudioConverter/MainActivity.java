@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -34,21 +35,18 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
-import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.YouTubeScopes;
-import com.google.api.services.youtube.model.PlaylistListResponse;
 import com.vistrav.ask.Ask;
 import com.vistrav.ask.annotations.AskDenied;
 import com.vistrav.ask.annotations.AskGranted;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
 
 import wingfly.com.VideoAudioConverter.Background.DownloadImageTask;
 import wingfly.com.VideoAudioConverter.Background.MakeRequestTask;
@@ -134,7 +132,7 @@ public class MainActivity extends AppCompatActivity
         {
             updateNavHeader();
             mCredential.setSelectedAccountName(account.getEmail());
-            new MakeRequestTask(MainActivity.this).execute(YoutubeStuff.CHANNEL);
+//            new MakeRequestTask(MainActivity.this).execute(YoutubeStuff.CHANNEL);
         }
     }
 
@@ -313,13 +311,9 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId())
         {
             case R.id.nav_playlists:
-                try
-                {
-                    getPlaylists();
-                } catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
+                new MakeRequestTask(MainActivity.this).execute(YoutubeStuff.PLAYLIST);
+                moveToFragment(
+                        wingfly.com.VideoAudioConverter.fragments.ListFragment.newInstance(null, null));
                 break;
         }
 
@@ -329,48 +323,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void getPlaylists() throws IOException
-    {
-        YouTube youtube = getYouTubeService();
-
-        try
-        {
-            HashMap<String, String> parameters = new HashMap<>();
-            parameters.put("part", "snippet,contentDetails");
-            parameters.put("mine", "true");
-
-            final YouTube.Playlists.List playlistsListByChannelIdRequest = youtube.playlists().list(parameters.get("part").toString());
-            if (parameters.containsKey("mine") && parameters.get("mine") != "")
-            {
-                playlistsListByChannelIdRequest.setMine(Boolean.valueOf(parameters.get("mine").toString()));
-            }
-
-            new Thread(new Runnable()
-            {
-                @Override
-                public void run()
-                {
-                    PlaylistListResponse response = null;
-                    try
-                    {
-                        response = playlistsListByChannelIdRequest.execute();
-                    } catch (IOException e)
-                    {
-                        e.printStackTrace();
-                    }
-                    System.out.println(response);
-                }
-            }).start();
-
-        } catch (GoogleJsonResponseException e)
-        {
-            e.printStackTrace();
-            System.err.println("There was a service error: " + e.getDetails().getCode() + " : " + e.getDetails().getMessage());
-        } catch (Throwable t)
-        {
-            t.printStackTrace();
-        }
-    }
 
     public YouTube getYouTubeService() throws IOException
     {
@@ -419,5 +371,12 @@ public class MainActivity extends AppCompatActivity
     public boolean hasPermission(Context context, String permission)
     {
         return (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    public void moveToFragment(Fragment fragment)
+    {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_frame, fragment, null)
+                .commit();
     }
 }
