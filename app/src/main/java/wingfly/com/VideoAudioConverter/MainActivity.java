@@ -50,6 +50,7 @@ import java.util.Arrays;
 
 import wingfly.com.VideoAudioConverter.Background.DownloadImageTask;
 import wingfly.com.VideoAudioConverter.Background.MakeRequestTask;
+import wingfly.com.VideoAudioConverter.recyclerView.RecyclerViewFragment;
 
 
 public class MainActivity extends AppCompatActivity
@@ -313,7 +314,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_playlists:
                 new MakeRequestTask(MainActivity.this).execute(YoutubeStuff.PLAYLIST);
                 moveToFragment(
-                        wingfly.com.VideoAudioConverter.fragments.ListFragment.newInstance(null, null));
+                        RecyclerViewFragment.newInstance(null, null));
                 break;
         }
 
