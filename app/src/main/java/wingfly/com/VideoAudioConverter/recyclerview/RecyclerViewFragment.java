@@ -24,7 +24,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
 
 import wingfly.com.VideoAudioConverter.R;
 
@@ -48,8 +47,6 @@ public class RecyclerViewFragment extends Fragment
 
     protected LayoutManagerType mCurrentLayoutManagerType;
 
-    protected RadioButton mLinearLayoutRadioButton;
-    protected RadioButton mGridLayoutRadioButton;
 
     protected RecyclerView mRecyclerView;
     protected CustomAdapter mAdapter;
@@ -96,25 +93,7 @@ public class RecyclerViewFragment extends Fragment
         mRecyclerView.setAdapter(mAdapter);
         // END_INCLUDE(initializeRecyclerView)
 
-        mLinearLayoutRadioButton = (RadioButton) rootView.findViewById(R.id.linear_layout_rb);
-        mLinearLayoutRadioButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                setRecyclerViewLayoutManager(LayoutManagerType.LINEAR_LAYOUT_MANAGER);
-            }
-        });
-
-        mGridLayoutRadioButton = (RadioButton) rootView.findViewById(R.id.grid_layout_rb);
-        mGridLayoutRadioButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                setRecyclerViewLayoutManager(LayoutManagerType.GRID_LAYOUT_MANAGER);
-            }
-        });
+        mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity().getApplicationContext()));
 
         return rootView;
     }

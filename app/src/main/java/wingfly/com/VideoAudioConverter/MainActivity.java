@@ -50,7 +50,7 @@ import java.util.Arrays;
 
 import wingfly.com.VideoAudioConverter.Background.DownloadImageTask;
 import wingfly.com.VideoAudioConverter.Background.MakeRequestTask;
-import wingfly.com.VideoAudioConverter.recyclerView.RecyclerViewFragment;
+import wingfly.com.VideoAudioConverter.recyclerview.RecyclerViewFragment;
 
 
 public class MainActivity extends AppCompatActivity
@@ -108,6 +108,8 @@ public class MainActivity extends AppCompatActivity
                 getApplicationContext(), Arrays.asList(SCOPES))
                 .setBackOff(new ExponentialBackOff());
         getResultsFromApi();
+
+        moveToFragment(new RecyclerViewFragment());
     }
 
     /**
@@ -313,8 +315,7 @@ public class MainActivity extends AppCompatActivity
         {
             case R.id.nav_playlists:
                 new MakeRequestTask(MainActivity.this).execute(YoutubeStuff.PLAYLIST);
-                moveToFragment(
-                        RecyclerViewFragment.newInstance(null, null));
+//                moveToFragment(RecyclerViewFragment.newInstance(null, null));
                 break;
         }
 
